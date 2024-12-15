@@ -1,0 +1,1 @@
+from .config import airport_schema, flight_schema, airline_schema, zone_schema
