@@ -1,0 +1,2 @@
+# Run the ETL script and all Python files in KPIs except for excluded_file.py
+0 */2 * * * cd /app && python ETL.py && find KPIs -type f -name "*.py" ! -name "Top3_aircraft_models_by_country.py" -exec python {} \; >> /app/logs/cron.log 2>&1
