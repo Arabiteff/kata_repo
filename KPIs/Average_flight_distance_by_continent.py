@@ -3,7 +3,7 @@ import sys
 import logging
 import pandas as pd
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, avg
+from pyspark.sql.functions import col, avg, isnan
 
 # Import utility functions
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -68,6 +68,7 @@ def main():
         result = (
             spark.createDataFrame(flights_pd)
             .filter(col("originContinent").isNotNull())
+            .filter(~isnan(col("flightDistance")))
             .groupBy("originContinent")
             .agg(avg("flightDistance").alias("average_flight_distance"))
         )

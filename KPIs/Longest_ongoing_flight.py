@@ -3,7 +3,7 @@ import sys
 import logging
 import coloredlogs
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col
+from pyspark.sql.functions import col, isnan
 import pandas as pd
 
 # Import utility functions
@@ -63,11 +63,10 @@ def main():
         # Step 5: Filter ongoing flights and find the longest flight
         logging.info("\033[1;32mFiltering ongoing flights and finding the longest flight...\033[0m")
         result = (
-            df_flights.filter(col("flightStatus") == "0")
+            df_flights.filter((col("flightStatus") == "0") & ~isnan(col("flightDistance")))
             .orderBy(col("flightDistance").desc())
             .limit(1)
         )
-
         # Step 6: Save the result
         logging.info("\033[1;34mSaving the longest ongoing flight result...\033[0m")
         save_kpi_data(
