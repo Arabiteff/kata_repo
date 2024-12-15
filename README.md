@@ -70,17 +70,18 @@ To demonstrate how to use the processed data, a Jupyter Notebook is provided in 
 
 ---
 
-## Project Structure
-
-.
-├── ETL.py                     # Main ETL script
-├── KPIs/                      # Folder containing individual KPI scripts
-├── data/                      # Folder where ingested and processed data is stored
-├── utils/                     # Utility scripts for loading, saving, and processing
-├── requirements.txt           # Python dependencies
-├── Dockerfile                 # Dockerfile for building the container
-├── cronjob                    # Cron job configuration
-└── README.md                
+## Project Structure:
+   ```plaintext
+   .
+   ├── ETL.py                     # Main ETL script
+   ├── KPIs/                      # Folder containing individual KPI scripts
+   ├── data/                      # Folder where ingested and processed data is stored
+   ├── utils/                     # Utility scripts for loading, saving, and processing
+   ├── requirements.txt           # Python dependencies
+   ├── Dockerfile                 # Dockerfile for building the container
+   ├── cronjob                    # Cron job configuration
+   └── README.md                
+   ```
 
 ---
 
